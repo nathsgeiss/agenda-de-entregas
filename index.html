@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Entregas</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Agenda de entregas</h1>
+        <p>Provas, trabalhos e apresentações em um só lugar.</p>
+    </header>
+
+    <main>
+        <section>
+            <h2>Resumo</h2>
+            <p>Pendentes <b>3</b></p>
+            <p>Próxima entrega <b>Matemática — 28/10</b></p>
+        </section>
+
+        <section>
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Nova entrega</legend>
+
+                    <p>
+                        <label for="materia">Matéria</label><br>
+                        <input type="text" id="materia" name="materia" placeholder="Ex.: Matemática" required>
+                    </p>
+
+                    <p>
+                        <label for="tipo">Tipo</label><br>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Escolha o tipo</option>
+                            <option value="prova">Prova</option>
+                            <option value="trabalho">Trabalho</option>
+                            <option value="apresentacao">Apresentação</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="data">Data</label><br>
+                        <input type="date" id="data" name="data" required>
+                    </p>
+
+                    <button type="submit">Adicionar</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section>
+            <h2>Próximas entregas</h2>
+
+            <p>
+                <label for="mostrar">Mostrar</label><br>
+                <select id="mostrar" name="mostrar">
+                    <option value="todos">Tudo</option>
+                    <option value="prova">Só provas</option>
+                    <option value="trabalho">Só trabalhos</option>
+                    <option value="apresentacao">Só apresentações</option>
+                </select>
+            </p>
+
+            <ul>
+                <li class="feita" data-tipo="trabalho">
+                    20/10
+                    <p><strong>Português</strong> Trabalho</p>
+                    <div>
+                        <button type="button">Reabrir</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+
+                <li data-tipo="prova">
+                    28/10
+                    <p><strong>Matemática</strong> Prova</p>
+                    <div>
+                        <button type="button">Feita</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+
+                <li data-tipo="apresentacao">
+                    30/10
+                    <p><strong>Inglês</strong> Apresentação</p>
+                    <div>
+                        <button type="button">Feita</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+
+                <li data-tipo="trabalho">
+                    04/11
+                    <p><strong>História</strong> Trabalho</p>
+                    <div>
+                        <button type="button">Feita</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        Feito por Nathália
+    </footer>
+
+</body>
+
+</html>
