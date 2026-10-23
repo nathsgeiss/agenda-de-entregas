@@ -1,0 +1,171 @@
+:root {
+  --cor-principal: #f4f1ec;      
+  --cor-fundo-botao: #ff7a59;    
+  --tamanho-fonte: 16px;
+}
+
+body {
+    background-color: var(--cor-principal);
+    color: #2b2d42;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: var(--tamanho-fonte);
+    margin: 0;
+}
+
+header {
+    background-color: #253858;
+    color: #ffffff;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+header h1 {
+    margin-top: 0;
+    color: #ffffff;
+}
+
+/* Layout mobile e base em Grid */
+main {
+    display: grid;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 24px 20px;
+    row-gap: 16px;
+    grid-template-areas:
+        "resumo"
+        "nova-entrega"
+        "proximas-entregas";
+}
+
+/* Associação das seções às áreas do Grid */
+.secao-resumo {
+    grid-area: resumo;
+}
+
+.secao-nova-entrega {
+    grid-area: nova-entrega;
+}
+
+.secao-proximas {
+    grid-area: proximas-entregas;
+}
+
+/* Estilo padrão dos cartões */
+main section {
+    background-color: #ffffff;
+    border: 1px solid #e3ded5;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+main h2, legend {
+    color: #253858;
+    font-size: 20px;
+    margin-top: 0;
+}
+
+/* Estilo dos dois indicadores do Resumo lado a lado */
+.resumo-container {
+    display: flex;
+    gap: 12px;
+}
+
+.indicador {
+    flex: 1;
+    background-color: #f4f0eb;
+    border: 1px solid #e3ded5;
+    border-radius: 8px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.indicador .rotulo {
+    font-size: 14px;
+    color: #6c6f86;
+    margin-bottom: 4px;
+}
+
+.indicador .valor {
+    font-size: 22px;
+    font-weight: bold;
+    color: #253858;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+footer {
+    text-align: center;
+    color: #6c6f86;
+    padding: 32px 0;
+}
+
+/* Media Query para telas grandes (Computador >= 800px) */
+@media (min-width: 800px) {
+    main {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "resumo proximas-entregas"
+            "nova-entrega proximas-entregas";
+        column-gap: 16px;
+    }
+}
+
+/* Remove a borda e o padding padrão do fieldset */
+.secao-nova-entrega fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Faz os labels ficarem em bloco (em cima dos campos) */
+.secao-nova-entrega label {
+    display: block;
+    font-size: 16px;
+    color: #6c6f86;
+    margin-bottom: 6px;
+}
+
+/* Campos de texto, select e data ocupando 100% da largura */
+.secao-nova-entrega input[type="text"],
+.secao-nova-entrega input[type="date"],
+.secao-nova-entrega select {
+    width: 100%;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    border: 1px solid #e3ded5;
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+    color: #2b2d42;
+}
+
+/* Espaçamento entre os grupos do formulário */
+.secao-nova-entrega p {
+    margin-bottom: 16px;
+}
+
+/* Botão Adicionar laranja */
+.secao-nova-entrega button[type="submit"] {
+    width: 100%;
+    background-color: var(--cor-fundo-botao);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Efeito hover no botão (mais escuro ao passar o mouse) */
+.secao-nova-entrega button[type="submit"]:hover {
+    background-color: #e8603e;
+}
+

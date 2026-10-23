@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda de Entregas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -15,13 +17,21 @@
     </header>
 
     <main>
-        <section>
+        <section class="secao-resumo">
             <h2>Resumo</h2>
-            <p>Pendentes <b>3</b></p>
-            <p>Próxima entrega <b>Matemática — 28/10</b></p>
+            <div class="resumo-container">
+                <div class="indicador">
+                    <span class="rotulo">Pendentes</span>
+                    <span class="valor">3</span>
+                </div>
+                <div class="indicador">
+                    <span class="rotulo">Próxima entrega</span>
+                    <span class="valor">Matemática — 28/10</span>
+                </div>
+            </div>
         </section>
 
-        <section>
+        <section class="secao-nova-entrega">
             <form action="#" method="post">
                 <fieldset>
                     <legend>Nova entrega</legend>
@@ -51,7 +61,7 @@
             </form>
         </section>
 
-        <section>
+        <section class="secao-proximas">
             <h2>Próximas entregas</h2>
 
             <p>
