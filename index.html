@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Entregas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Agenda de entregas</h1>
+        <p>Provas, trabalhos e apresentações em um só lugar.</p>
+    </header>
+
+    <main>
+        <section class="secao-resumo">
+            <h2>Resumo</h2>
+            <div class="resumo-container">
+                <div class="indicador">
+                    <span class="rotulo">Pendentes</span>
+                    <span class="valor">3</span>
+                </div>
+                <div class="indicador">
+                    <span class="rotulo">Próxima entrega</span>
+                    <span class="valor">Matemática — 28/10</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="secao-nova-entrega">
+            <form action="#" method="post">
+                <fieldset>
+                    <legend>Nova entrega</legend>
+
+                    <p>
+                        <label for="materia">Matéria</label><br>
+                        <input type="text" id="materia" name="materia" placeholder="Ex.: Matemática" required>
+                    </p>
+
+                    <p>
+                        <label for="tipo">Tipo</label><br>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Escolha o tipo</option>
+                            <option value="Prova">Prova</option>
+                            <option value="Trabalho">Trabalho</option>
+                            <option value="Apresentação">Apresentação</option>
+                        </select>
+                    </p>
+
+                    <p>
+                        <label for="data">Data</label><br>
+                        <input type="date" id="data" name="data" required>
+                    </p>
+
+                    <button type="submit">Adicionar</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <section class="secao-proximas">
+            <h2>Próximas entregas</h2>
+
+            <p>
+                <label for="mostrar">Mostrar</label><br>
+                <select id="mostrar" name="mostrar">
+                    <option value="todos">Tudo</option>
+                    <option value="prova">Só provas</option>
+                    <option value="trabalho">Só trabalhos</option>
+                    <option value="apresentacao">Só apresentações</option>
+                </select>
+            </p>
+
+            <ul>
+                <li class="entrega feita" data-tipo="Trabalho">
+                    <div class="entrega-info">
+                        <span class="entrega-data">20/10</span>
+                        <span class="entrega-materia">Português</span>
+                        <span class="entrega-etiqueta">Trabalho</span>
+                    </div>
+                    <div class="entrega-acoes">
+                        <button type="button">Reabrir</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+
+                <li class="entrega" data-tipo="Prova">
+                    <div class="entrega-info">
+                        <span class="entrega-data">28/10</span>
+                        <span class="entrega-materia">Matemática</span>
+                        <span class="entrega-etiqueta">Prova</span>
+                    </div>
+                    <div class="entrega-acoes">
+                        <button type="button">Feita</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+
+                <li class="entrega" data-tipo="Apresentação">
+                    <div class="entrega-info">
+                        <span class="entrega-data">30/10</span>
+                        <span class="entrega-materia">Inglês</span>
+                        <span class="entrega-etiqueta">Apresentação</span>
+                    </div>
+                    <div class="entrega-acoes">
+                        <button type="button">Feita</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+
+                <li class="entrega" data-tipo="Trabalho">
+                    <div class="entrega-info">
+                        <span class="entrega-data">04/11</span>
+                        <span class="entrega-materia">História</span>
+                        <span class="entrega-etiqueta">Trabalho</span>
+                    </div>
+                    <div class="entrega-acoes">
+                        <button type="button">Feita</button>
+                        <button type="button">Apagar</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        Feito por Nathália
+    </footer>
+
+</body>
+
+</html>
