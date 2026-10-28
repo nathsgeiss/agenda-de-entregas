@@ -8,6 +8,10 @@
   --cor-apresentacao: #9c36b5;
 }
 
+.entrega[data-tipo="Prova"] { border-left-color: var(--cor-prova); }
+.entrega[data-tipo="Trabalho"] { border-left-color: var(--cor-trabalho); }
+.entrega[data-tipo="Apresentação"] { border-left-color: var(--cor-apresentacao); }
+
 body {
     background-color: var(--cor-principal);
     color: #2b2d42;
