@@ -1,5 +1,3 @@
-// Funções auxiliares para a Agenda de Entregas
-
 export function formatarData(dataIso) {
     if (!dataIso) return '';
     const partes = dataIso.split('-');
