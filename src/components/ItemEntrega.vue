@@ -17,7 +17,9 @@ defineEmits(['alternar', 'apagar']);
         <span class="data">{{ formatarData(entrega.data) }}</span>
         
         <div class="info">
-            <span class="materia">{{ entrega.materia }}</span>
+            <RouterLink :to="`/entrega/${entrega.id}`" class="materia">
+                {{ entrega.materia }}
+            </RouterLink>
             <span class="etiqueta">{{ entrega.tipo }}</span>
         </div>
 
@@ -25,14 +27,14 @@ defineEmits(['alternar', 'apagar']);
             <button 
                 type="button" 
                 class="btn-acao" 
-                @click="$emit('alternar', entrega)"
+                @click="$emit('alternar', entrega.id)"
             >
                 {{ entrega.feita ? 'Reabrir' : 'Feita' }}
             </button>
             <button 
                 type="button" 
                 class="botao-apagar" 
-                @click="$emit('apagar', entrega)"
+                @click="$emit('apagar', entrega.id)"
             >
                 Apagar
             </button>

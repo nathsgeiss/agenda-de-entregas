@@ -26,11 +26,15 @@ export function passaNoFiltro(entrega, filtro) {
     return entrega.tipo === filtro;
 }
 
-export function montarTextoDaProxima(lista) {
+export function encontrarProxima(lista) {
     const pendentes = ordenarPorData(filtrarPendentes(lista));
-    if (pendentes.length === 0) {
+    return pendentes.length > 0 ? pendentes[0] : undefined;
+}
+
+export function montarTextoDaProxima(lista) {
+    const proxima = encontrarProxima(lista);
+    if (!proxima) {
         return 'Nada pendente';
     }
-    const proxima = pendentes[0];
     return `${proxima.materia} — ${formatarData(proxima.data)}`;
 }

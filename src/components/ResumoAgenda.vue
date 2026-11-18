@@ -1,8 +1,10 @@
 <script setup>
+import { formatarData } from '../agenda.js';
+
 defineProps({
     pendentes: Number,
     feitas: Number,
-    proxima: String
+    proxima: Object // Agora recebe o objeto da próxima entrega (ou undefined)
 });
 
 defineEmits(['limpar-feitas']);
@@ -25,7 +27,17 @@ defineEmits(['limpar-feitas']);
 
             <p class="indicador" style="grid-column: span 2;">
                 <span class="rotulo">Próxima entrega</span>
-                <strong class="proxima">{{ proxima }}</strong>
+                <strong class="proxima">
+                    <RouterLink 
+                        v-if="proxima" 
+                        :to="`/entrega/${proxima.id}`" 
+                        class="materia"
+                        style="color: var(--cor-principal); text-decoration: none;"
+                    >
+                        {{ proxima.materia }} — {{ formatarData(proxima.data) }}
+                    </RouterLink>
+                    <span v-else>—</span>
+                </strong>
             </p>
         </div>
 

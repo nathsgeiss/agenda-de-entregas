@@ -20,13 +20,6 @@ function enviarEntrega() {
     };
 
     emit('adicionar', novaEntrega);
-    limparFormulario();
-}
-
-function limparFormulario() {
-    materia.value = '';
-    tipo.value = '';
-    data.value = '';
 }
 </script>
 
