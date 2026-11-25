@@ -1,0 +1,475 @@
+/* ===========================================================
+   O Tailwind, sem o preflight (o "zerador" de estilos do navegador).
+
+   As classes do Tailwind ficam na camada utilities; o CSS que já
+   existia fica na camada base. Entre camadas, ganha a que vem
+   depois na lista: as classes do Tailwind ganham do CSS antigo.
+
+   Num projeto novo, bastaria uma linha: @import "tailwindcss";
+   =========================================================== */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Daqui até o fim, o CSS de antes, dentro da camada base. */
+@layer base {
+
+/* ===========================================================
+   Agenda de entregas — etapa 2: o CSS
+   =========================================================== */
+
+:root {
+    --cor-fundo: #f4f1ec;
+    --cor-cartao: #ffffff;
+    --cor-texto: #2b2d42;
+    --cor-suave: #6c6f86;
+    --cor-principal: #253858;
+    --cor-destaque: #ff7a59;
+    --cor-destaque-escura: #e8603e;
+    --cor-borda: #e3ded5;
+
+    /* Uma cor para cada tipo de entrega */
+    --cor-prova: #e03131;
+    --cor-trabalho: #1971c2;
+    --cor-apresentacao: #9c36b5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--cor-texto);
+}
+
+
+/* -----------------------------------------------------------
+   Topo e rodapé
+   ----------------------------------------------------------- */
+
+.topo {
+    padding: 28px 20px;
+    background-color: var(--cor-principal);
+    color: #ffffff;
+    text-align: center;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.topo p {
+    margin: 4px 0 0 0;
+    color: #c7d2e6;
+}
+
+.rodape {
+    padding: 8px 20px 24px 20px;
+    color: var(--cor-suave);
+    font-size: 14px;
+    text-align: center;
+}
+
+
+/* -----------------------------------------------------------
+   O painel — celular primeiro: uma coluna
+   ----------------------------------------------------------- */
+
+.painel {
+    display: grid;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    grid-template-areas:
+        "resumo"
+        "formulario"
+        "entregas";
+}
+
+.resumo       { grid-area: resumo; }
+.nova-entrega { grid-area: formulario; }
+.entregas     { grid-area: entregas; }
+
+.cartao {
+    padding: 20px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background-color: var(--cor-cartao);
+}
+
+h2,
+legend {
+    margin: 0 0 14px 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-principal);
+}
+
+
+/* -----------------------------------------------------------
+   Resumo
+   ----------------------------------------------------------- */
+
+.indicadores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.indicador {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+}
+
+.rotulo {
+    display: block;
+    font-size: 13px;
+    color: var(--cor-suave);
+}
+
+.indicador strong {
+    font-size: 20px;
+    color: var(--cor-principal);
+}
+
+
+/* -----------------------------------------------------------
+   Formulário
+   ----------------------------------------------------------- */
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.formulario p,
+.filtro {
+    margin: 0 0 14px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    background-color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 2px;
+}
+
+.botao-adicionar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-adicionar:hover {
+    background-color: var(--cor-destaque-escura);
+}
+
+
+/* -----------------------------------------------------------
+   A lista de entregas
+   ----------------------------------------------------------- */
+
+.lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Cada entrega: a data, as informações e os botões, lado a lado */
+.entrega {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    border: 1px solid var(--cor-borda);
+    border-left: 6px solid var(--cor-suave);
+    border-radius: 8px;
+}
+
+.data {
+    min-width: 52px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-principal);
+}
+
+/* As informações ocupam todo o espaço que sobrar */
+.info {
+    flex: 1;
+}
+
+.materia {
+    display: block;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-top: 2px;
+    padding: 1px 10px;
+    border-radius: 999px;
+    background-color: var(--cor-suave);
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.acoes {
+    display: flex;
+    gap: 6px;
+}
+
+.acoes button {
+    padding: 6px 10px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.acoes button:hover {
+    background-color: var(--cor-fundo);
+}
+
+.acoes .botao-apagar:hover {
+    border-color: var(--cor-prova);
+    color: var(--cor-prova);
+}
+
+
+/* Seletor de atributo: a cor de cada tipo */
+
+.entrega[data-tipo="prova"]        { border-left-color: var(--cor-prova); }
+.entrega[data-tipo="trabalho"]     { border-left-color: var(--cor-trabalho); }
+.entrega[data-tipo="apresentacao"] { border-left-color: var(--cor-apresentacao); }
+
+[data-tipo="prova"] .etiqueta        { background-color: var(--cor-prova); }
+[data-tipo="trabalho"] .etiqueta     { background-color: var(--cor-trabalho); }
+[data-tipo="apresentacao"] .etiqueta { background-color: var(--cor-apresentacao); }
+
+
+/* Uma entrega feita: apagada e com a matéria riscada */
+
+.entrega.feita {
+    opacity: 0.55;
+}
+
+.entrega.feita .materia {
+    text-decoration: line-through;
+}
+
+
+/* -----------------------------------------------------------
+   A partir de 800px: duas colunas
+   ----------------------------------------------------------- */
+
+@media (min-width: 800px) {
+
+    .painel {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 1fr;
+        grid-template-areas:
+            "resumo     entregas"
+            "formulario entregas";
+        align-items: start;
+    }
+
+}
+
+
+/* -----------------------------------------------------------
+   As páginas e o menu
+   ----------------------------------------------------------- */
+
+.painel {
+    grid-template-areas: none;
+}
+
+.resumo,
+.nova-entrega,
+.entregas {
+    grid-area: auto;
+}
+
+/* O formulário sozinho na página dele, centralizado */
+.nova-entrega {
+    width: 100%;
+    max-width: 460px;
+    justify-self: center;
+}
+
+@media (min-width: 800px) {
+
+    .painel {
+        grid-template-rows: auto;
+        grid-template-areas: none;
+    }
+
+    .nova-entrega {
+        grid-column: 1 / -1;
+    }
+
+}
+
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--cor-principal);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.menu a {
+    padding: 8px 16px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+/* A classe que o Router coloca no link da página atual */
+.menu a.router-link-active {
+    background-color: #ffffff;
+    color: var(--cor-principal);
+}
+
+
+/* -----------------------------------------------------------
+   As setas de voltar e avançar, nas pontas do menu
+   ----------------------------------------------------------- */
+
+.botao-navegar {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.75);
+    font-family: inherit;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.botao-navegar:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.botao-navegar:focus-visible {
+    outline: 3px solid #ffffff;
+}
+
+
+/* -----------------------------------------------------------
+   A página de uma entrega
+   ----------------------------------------------------------- */
+
+/* A matéria na lista virou um link */
+.entrega a.materia {
+    color: inherit;
+    font-weight: bold;
+}
+
+.detalhe-cartao {
+    grid-column: 1 / -1;
+}
+
+.detalhe-materia {
+    margin: 0;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.detalhe-acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.detalhe-acoes a,
+.detalhe-acoes button {
+    width: auto;
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-voltar {
+    border: 1px solid var(--cor-principal);
+    color: var(--cor-principal);
+    text-decoration: none;
+}
+
+.detalhe-acoes .botao-feita {
+    border: none;
+    background-color: var(--cor-principal);
+    color: #ffffff;
+}
+
+.detalhe-acoes .botao-apagar {
+    border: 1px solid #c92a2a;
+    background-color: #ffffff;
+    color: #c92a2a;
+}
+
+/* O Voltar é um botão, com a mesma cara do link */
+.detalhe-acoes button.botao-voltar {
+    background-color: #ffffff;
+}
+
+/* A próxima entrega do resumo virou um link */
+.indicador a {
+    color: inherit;
+}
+
+} /* fim do @layer base */
